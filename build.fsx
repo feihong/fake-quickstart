@@ -10,13 +10,19 @@ Target "Clean" (fun _ ->
     CleanDir buildDir
 )
 
-Target "Default" (fun _ ->
+Target "Build" (fun _ ->
+    let fileSet = !! "src/**/*.md"
+    for p in fileSet do
+        trace p 
+)
+
+Target "Hello" (fun _ ->
     trace "Hello World from FAKE"
 )
 
 // Dependencies
 "Clean"
-    ==> "Default"
+    ==> "Build"
 
 // start build
-RunTargetOrDefault "Default"
+RunTargetOrDefault "Build"
