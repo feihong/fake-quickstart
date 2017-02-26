@@ -8,7 +8,12 @@ http://fsharp.github.io/FAKE/
 
 `mono .paket/paket.exe install`
 
+Add to `.bashrc`:
+
+`alias fake='mono packages/FAKE/tools/FAKE.exe'`
+
 ## Sources
 
 - [Scripting in F# Using Fake and Paket](https://www.infoq.com/news/2016/12/fsharp-scripting-fake-paket)
+- [Markdown parser](https://tpetricek.github.io/FSharp.Formatting/markdown.html)
 - [FileHelper](http://fsharp.github.io/FAKE/apidocs/fake-filehelper.html)
