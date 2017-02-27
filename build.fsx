@@ -3,6 +3,7 @@
 #load "./convert.fsx"
 #load "./util.fsx"
 open Fake
+open Fake.FileSystemHelper
 open Util
 
 // Properties
@@ -17,6 +18,12 @@ Target "Build" (fun _ ->
     let fileSet = !! "src/**/*.md"
     for p in fileSet do
         trace p 
+        trace <| "build" +/ (relativePath "src" p)
+    
+    // let dirInfo = directoryInfo  "src"
+    // trace dirInfo.FullName
+    // for fileInfo in filesInDirMatchingRecursive "*.md" dirInfo do
+    //     trace <| fileInfo.FullName
 )
 
 Target "Hello" (fun _ ->
