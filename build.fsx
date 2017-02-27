@@ -1,6 +1,9 @@
 // include Fake lib
-#r @"packages/FAKE/tools/FakeLib.dll"
+#r "packages/FAKE/tools/FakeLib.dll"
+#load "./convert.fsx"
+#load "./util.fsx"
 open Fake
+open Util
 
 // Properties
 let buildDir = "./build/"
@@ -18,6 +21,9 @@ Target "Build" (fun _ ->
 
 Target "Hello" (fun _ ->
     trace "Hello World from FAKE"
+    trace <| sprintf "Source directory: %s" __SOURCE_DIRECTORY__
+    trace <| sprintf "Source file: %s" __SOURCE_FILE__
+    trace <| sprintf "Source path: %s" (__SOURCE_DIRECTORY__ +/ __SOURCE_FILE__)
 )
 
 // Dependencies

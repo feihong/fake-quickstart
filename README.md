@@ -15,5 +15,6 @@ Add to `.bashrc`:
 ## Sources
 
 - [Scripting in F# Using Fake and Paket](https://www.infoq.com/news/2016/12/fsharp-scripting-fake-paket)
+- [Any way to have a many-buildfile structure in FAKE?](http://stackoverflow.com/questions/20319061/any-way-to-have-a-many-buildfile-structure-in-fake)
 - [Markdown parser](https://tpetricek.github.io/FSharp.Formatting/markdown.html)
 - [FileHelper](http://fsharp.github.io/FAKE/apidocs/fake-filehelper.html)
