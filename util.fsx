@@ -1,11 +1,13 @@
 #r "packages/FAKE/tools/FakeLib.dll"
-// open Fake
 open Fake.FileSystemHelper
+open Fake.StringHelper
 
-open System.IO
 
+let buildDir = FullName "build"
+let srcDir = FullName "src"
 
-let relativePath dir path =
-    let dirInfo = directoryInfo dir
-    let path' = fileInfo path
-    path'.FullName.Substring(dirInfo.FullName.Length + 1)
+/// Based on FAKE's CopyFileWithSubfolder function.
+let toBuildPath fileName =
+  let fileName = FullName fileName
+  let relative = (ProduceRelativePath srcDir fileName).TrimStart('.')
+  buildDir + relative

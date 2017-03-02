@@ -2,7 +2,9 @@
 #r "packages/FAKE/tools/FakeLib.dll"
 #load "./convert.fsx"
 #load "./util.fsx"
+open System.IO
 open Fake
+open Fake.StringHelper
 open Fake.EnvironmentHelper
 open Fake.FileSystemHelper
 open Util
@@ -18,13 +20,8 @@ Target "Clean" (fun _ ->
 Target "Build" (fun _ ->
     let fileSet = !! "src/**/*.md"
     for p in fileSet do
-        trace p
-        trace <| ("build" </> (relativePath "src" p))
-
-    // let dirInfo = directoryInfo  "src"
-    // trace dirInfo.FullName
-    // for fileInfo in filesInDirMatchingRecursive "*.md" dirInfo do
-    //     trace <| fileInfo.FullName
+        //trace <| toRelativePath p
+        trace <| sprintf "%s -> %s" p (toBuildPath p)
 )
 
 Target "Hello" (fun _ ->
