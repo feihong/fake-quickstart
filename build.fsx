@@ -1,4 +1,3 @@
-// include Fake lib
 #r "packages/FAKE/tools/FakeLib.dll"
 #load "./convert.fsx"
 #load "./util.fsx"
@@ -8,6 +7,7 @@ open Fake.StringHelper
 open Fake.EnvironmentHelper
 open Fake.FileSystemHelper
 open Util
+open Convert
 
 // Properties
 let buildDir = "./build/"
@@ -20,8 +20,12 @@ Target "Clean" (fun _ ->
 Target "Build" (fun _ ->
     let fileSet = !! "src/**/*.md"
     for p in fileSet do
-        //trace <| toRelativePath p
-        trace <| sprintf "%s -> %s" p (toBuildPath p)
+        let buildPath = toBuildPath p
+        trace <| sprintf "%s -> %s" p buildPath
+        let buildPathInfo = fileInfo buildPath
+        buildPathInfo.Directory |> ensureDirExists
+        let html = parseFile p
+        File.WriteAllText(buildPath, html)
 )
 
 Target "Hello" (fun _ ->
