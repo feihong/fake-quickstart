@@ -6,6 +6,7 @@ open Fake
 open Fake.StringHelper
 open Fake.EnvironmentHelper
 open Fake.FileSystemHelper
+
 open Util
 open Convert
 
@@ -20,7 +21,7 @@ Target "Clean" (fun _ ->
 Target "Build" (fun _ ->
     let fileSet = !! "src/**/*.md"
     for p in fileSet do
-        let buildPath = toBuildPath p
+        let buildPath = toBuildPath p |> changeExt ".html"
         trace <| sprintf "%s -> %s" p buildPath
         let buildPathInfo = fileInfo buildPath
         buildPathInfo.Directory |> ensureDirExists
