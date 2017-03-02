@@ -6,7 +6,10 @@ http://fsharp.github.io/FAKE/
 
 ## Installation
 
-`mono .paket/paket.exe install`
+```
+mono .paket/paket.bootstrapper.exe
+mono .paket/paket.exe install
+```
 
 Add to `.bashrc`:
 

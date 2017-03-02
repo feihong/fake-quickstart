@@ -3,6 +3,7 @@
 #load "./convert.fsx"
 #load "./util.fsx"
 open Fake
+open Fake.EnvironmentHelper
 open Fake.FileSystemHelper
 open Util
 
@@ -17,9 +18,9 @@ Target "Clean" (fun _ ->
 Target "Build" (fun _ ->
     let fileSet = !! "src/**/*.md"
     for p in fileSet do
-        trace p 
-        trace <| "build" +/ (relativePath "src" p)
-    
+        trace p
+        trace <| ("build" </> (relativePath "src" p))
+
     // let dirInfo = directoryInfo  "src"
     // trace dirInfo.FullName
     // for fileInfo in filesInDirMatchingRecursive "*.md" dirInfo do
@@ -30,7 +31,7 @@ Target "Hello" (fun _ ->
     trace "Hello World from FAKE"
     trace <| sprintf "Source directory: %s" __SOURCE_DIRECTORY__
     trace <| sprintf "Source file: %s" __SOURCE_FILE__
-    trace <| sprintf "Source path: %s" (__SOURCE_DIRECTORY__ +/ __SOURCE_FILE__)
+    trace <| sprintf "Source path: %s" (__SOURCE_DIRECTORY__ </> __SOURCE_FILE__)
 )
 
 // Dependencies
